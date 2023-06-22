@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //Disable debug banner
       debugShowCheckedModeBanner: false,
-      title: 'Space X Launches',
+      title: 'SpaceX Launches',
       //Global theme
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,

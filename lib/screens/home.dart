@@ -42,6 +42,13 @@ class _HomeState extends State<Home> {
     _launchpads = _getLaunchPads();
   }
 
+  //Dispose the expandable controller when finsihed with it
+  @override
+  void dispose() {
+    _expandableController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -72,6 +72,7 @@ class _LaunchesState extends State<Launches> {
         child: Column(
           children: [
             Expanded(
+              flex: 1,
               child: GoogleMap(
                 myLocationEnabled: true,
                 markers: {
@@ -88,6 +89,7 @@ class _LaunchesState extends State<Launches> {
               ),
             ),
             Expanded(
+              flex: 2,
               child: FutureBuilder<List<Launch>>(
                 future: _launches,
                 builder: (context, snapshot) {

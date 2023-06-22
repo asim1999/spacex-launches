@@ -18,9 +18,10 @@ class _HomeState extends State<Home> {
 
   Future<List<Launchpad>> _getLaunchPads() async {
     final response = await http.get(Uri.parse('https://api.spacexdata.com/v3/launchpads'));
-    List<Map<String,dynamic>> jsonData = jsonDecode(response.body);
+    List jsonData = jsonDecode(response.body);
+    print(jsonDecode(response.body).runtimeType);
   //  Convert to objects
-    List<Launchpad> launchpads = jsonData.map((e) => Launchpad.fromJson(e)).toList();
+    List<Launchpad> launchpads = jsonData.map((e) => Launchpad.fromJson(e as Map<String,dynamic>)).toList();
     return launchpads;
   }
 

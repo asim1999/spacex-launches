@@ -8,10 +8,10 @@ part of 'launchpad.dart';
 
 Launchpad _$LaunchpadFromJson(Map<String, dynamic> json) => Launchpad(
       siteId: json['site_id'] as String,
-      long: (json['location.longitude'] as num).toDouble(),
-      lat: (json['location.latitude'] as num).toDouble(),
-      name: json['location.name'] as String,
-      region: json['location.region'] as String,
+      long: (json['location']['longitude'] as num).toDouble(),
+      lat: (json['location']['latitude'] as num).toDouble(),
+      name: json['location']['name'] as String,
+      region: json['location']['region'] as String,
       details: json['details'] as String,
     );
 

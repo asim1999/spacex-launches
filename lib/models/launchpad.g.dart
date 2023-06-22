@@ -6,7 +6,7 @@ part of 'launchpad.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LaunchPad _$LaunchPadFromJson(Map<String, dynamic> json) => LaunchPad(
+Launchpad _$LaunchpadFromJson(Map<String, dynamic> json) => Launchpad(
       siteId: json['site_id'] as String,
       long: (json['location.longitude'] as num).toDouble(),
       lat: (json['location.latitude'] as num).toDouble(),
@@ -15,7 +15,7 @@ LaunchPad _$LaunchPadFromJson(Map<String, dynamic> json) => LaunchPad(
       details: json['details'] as String,
     );
 
-Map<String, dynamic> _$LaunchPadToJson(LaunchPad instance) => <String, dynamic>{
+Map<String, dynamic> _$LaunchpadToJson(Launchpad instance) => <String, dynamic>{
       'site_id': instance.siteId,
       'location.longitude': instance.long,
       'location.latitude': instance.lat,

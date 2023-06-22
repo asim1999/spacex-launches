@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'launchpad.g.dart';
 
 @JsonSerializable()
-class LaunchPad {
+class Launchpad {
 
   @JsonKey(name: 'site_id')
   final String siteId;
@@ -24,8 +24,8 @@ class LaunchPad {
   String details;
 
 
-  LaunchPad(
-      {required this.siteId, required this.long, required this.lat, this.name, this.region,
+  Launchpad(
+      {required this.siteId, required this.long, required this.lat, required this.name, required this.region,
         required this.details,});
 
   /// Connect the generated [_$LaunchFromJson] function to the `fromJson`

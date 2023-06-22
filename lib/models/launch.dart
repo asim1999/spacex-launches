@@ -18,7 +18,7 @@ class Launch {
   final DateTime launchDate;
 
   @JsonKey(name: 'launch_success')
-  final bool launchSuccess;
+  final bool? launchSuccess;
 
   @JsonKey(name: 'details')
   final String? details;

@@ -80,7 +80,7 @@ class LaunchpadExpansionCard extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  launchpad.details,
+                  launchpad.details ?? '',
                   style: const TextStyle(
                     fontSize: 12,
                   ),

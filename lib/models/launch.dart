@@ -11,7 +11,7 @@ class Launch {
   final String missionName;
 
   @JsonKey(
-    name: 'launch_date_unix',
+    name: 'launch_date_utc',
     toJson: _toJson,
     fromJson: _fromJson,
   )
@@ -39,8 +39,8 @@ class Launch {
   Map<String, dynamic> toJson() => _$LaunchToJson(this);
 
   //From and toJson date methods
-  static int _toJson(DateTime value) => value.millisecondsSinceEpoch;
+  static String _toJson(DateTime value) => value.toIso8601String();
 
-  static DateTime _fromJson(int value) =>
-      DateTime.fromMillisecondsSinceEpoch(value);
+  static DateTime _fromJson(String value) =>
+      DateTime.parse(value);
 }

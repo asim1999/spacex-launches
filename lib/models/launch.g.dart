@@ -11,7 +11,7 @@ Launch _$LaunchFromJson(Map<String, dynamic> json) => Launch(
       missionName: json['mission_name'] as String,
       launchDate: Launch._fromJson(json['launch_date_unix'] as int),
       launchSuccess: json['launch_success'] as bool,
-      details: json['details'] as String,
+      details: json['details'] as String?,
     );
 
 Map<String, dynamic> _$LaunchToJson(Launch instance) => <String, dynamic>{

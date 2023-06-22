@@ -21,7 +21,7 @@ class Launchpad {
   String region;
 
   @JsonKey(name: 'details')
-  String details;
+  String? details;
 
 
   Launchpad(

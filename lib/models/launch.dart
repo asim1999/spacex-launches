@@ -4,7 +4,7 @@ part 'launch.g.dart';
 
 @JsonSerializable()
 class Launch {
-  @JsonKey(name: 'launch_site.site-id')
+  @JsonKey(name: 'launch_site.site_id')
   final String siteId;
 
   @JsonKey(name: 'mission_name')
@@ -21,7 +21,7 @@ class Launch {
   final bool launchSuccess;
 
   @JsonKey(name: 'details')
-  final String details;
+  final String? details;
 
   Launch({
     required this.siteId,

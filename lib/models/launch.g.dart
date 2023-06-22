@@ -7,7 +7,7 @@ part of 'launch.dart';
 // **************************************************************************
 
 Launch _$LaunchFromJson(Map<String, dynamic> json) => Launch(
-      siteId: json['launch_site.site-id'] as String,
+      siteId: json['launch_site']['site-id'] as String,
       missionName: json['mission_name'] as String,
       launchDate: Launch._fromJson(json['launch_date_unix'] as int),
       launchSuccess: json['launch_success'] as bool,

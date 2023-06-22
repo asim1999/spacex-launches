@@ -12,10 +12,32 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //Disable debug banner
+      debugShowCheckedModeBanner: false,
       title: 'Space X Launches',
+      //Global theme
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+            elevation: 0,
+            color: Colors.white,
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+            iconTheme: IconThemeData(
+              color: Colors.black,
+            )),
+        tabBarTheme: const TabBarTheme(
+          indicator: UnderlineTabIndicator(
+            borderSide: BorderSide(
+              color: Colors.black,
+              width: 2,
+            ),
+          ),
+          labelColor: Colors.black,
+        ),
+        primarySwatch: Colors.blue,
       ),
       home: const Home(),
     );

@@ -18,7 +18,7 @@ class LaunchPad {
   String name;
 
   @JsonKey(name: 'location.region')
-  String region
+  String region;
 
   @JsonKey(name: 'details')
   String details;

@@ -6,6 +6,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:space_x_launches/models/launch.dart';
 import 'package:space_x_launches/models/launchpad.dart';
+import 'package:space_x_launches/widgets/launches/tabs/failure_tab.dart';
+import 'package:space_x_launches/widgets/launches/tabs/success_tab.dart';
 
 class Launches extends StatefulWidget {
   final Launchpad launchpad;
@@ -56,49 +58,63 @@ class _LaunchesState extends State<Launches> {
       appBar: AppBar(
         title: const Text('Launches'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: GoogleMap(
-              myLocationEnabled: true,
-              markers: {
-                Marker(
-                  markerId: MarkerId(widget.launchpad.siteId),
-                  position: LatLng(widget.launchpad.lat, widget.launchpad.long),
+      body: DefaultTabController(
+        length: 2,
+        child: Column(
+          children: [
+            Expanded(
+              child: GoogleMap(
+                myLocationEnabled: true,
+                markers: {
+                  Marker(
+                    markerId: MarkerId(widget.launchpad.siteId),
+                    position:
+                        LatLng(widget.launchpad.lat, widget.launchpad.long),
+                  ),
+                },
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(widget.launchpad.lat, widget.launchpad.long),
+                  zoom: 18,
                 ),
-              },
-              initialCameraPosition: CameraPosition(
-                target: LatLng(widget.launchpad.lat, widget.launchpad.long),
-                zoom: 18,
               ),
             ),
-          ),
-          Expanded(
-            child: FutureBuilder<List<Launch>>(
-              future: _launches,
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                //Get launches
-                final launches = snapshot.data!;
-                return Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+            Expanded(
+              child: FutureBuilder<List<Launch>>(
+                future: _launches,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  //Get launches
+                  final launches = snapshot.data!;
+                  return Column(
                     children: [
-                      Text(
-                          '${launches.where((element) => element.launchSuccess == true).length}'),
-                      Text(
-                          '${launches.where((element) => element.launchSuccess == false).length}'),
+                      const TabBar(
+                        tabs: [
+                          Tab(text: 'Successful'),
+                          Tab(text: 'Failed'),
+                        ],
+                      ),
+                      Expanded(
+                          child: TabBarView(
+                        children: [
+                          SuccessTab(
+                              launches: launches,
+                              controller: _expandableController),
+                          FailiureTab(
+                              launches: launches,
+                              controller: _expandableController),
+                        ],
+                      ))
                     ],
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

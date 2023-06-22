@@ -57,6 +57,15 @@ class _LaunchesState extends State<Launches> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Launches'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => _expandableController.toggle(),
+            icon: const Icon(
+              Icons.menu,
+            ),
+          ),
+        ],
       ),
       body: DefaultTabController(
         length: 2,

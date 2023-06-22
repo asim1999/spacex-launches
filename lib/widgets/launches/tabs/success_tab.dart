@@ -18,7 +18,7 @@ class SuccessTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: _getSuccessfulLaunches().length,
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         vertical: 8,
         horizontal: 20,
       ),
